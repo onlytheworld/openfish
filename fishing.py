@@ -1,5 +1,5 @@
 # -*- coding: UTF-8 -*-
-import pyautogui as pyautogui
+import pyautogui
 import time
 from cnocr import CnOcr
 import cv2
