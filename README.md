@@ -1,6 +1,33 @@
 # openfish
 minecraft 钓鱼脚本
 
+## fishing-win.py 为windows可用的后台挂机版本
+脚本特点：
+```
+1、仅支持windows系统后台挂机使用
+2、可以重新校准
+```
+使用方法：
+```
+1、在minecraft界面输入 F3+P 失去焦距
+2、打开脚本，选择必要的选项
+3、如需校准，会弹出截图界面，请确保截图区域右下角刚好对准文本区域右下角
+```
+校准值示意图：
+
+![avatar](校准值示意图.png)
+
+正确的截图示例：
+![avatar](正确的截图示例.png)
+
+
+## 依赖环境安装参考
+Python 3.7.9
+
+```
+pip3 install -r requirements.txt -i https://pypi.tuna.tsinghua.edu.cn/simple
+```
+
 ## fishing.py 为简易通用版本
 
     可适用所有机器
@@ -10,22 +37,6 @@ minecraft 钓鱼脚本
         有一定概率鼠标被屏蔽
         全屏下无法截图
         键盘被屏蔽
-
-
-
-## fishing-win.py 为windows可用的后台挂机版本
-
-    仅vista版本以后windows系统可用
-    修改了文本区域检测算法为mser算法
-    使用cnocr识别文本
-    修改了屏幕鼠标键盘操作，改用win32api接口，支持后台挂机
-
-## 依赖环境安装参考
-Python 3.7.9
-
-```
-pip3 install -r requirements.txt -i https://pypi.tuna.tsinghua.edu.cn/simple
-```
 
 ### 计划将要支持：
     mser算法之后的文本框选择方法有待改进
