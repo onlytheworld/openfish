@@ -11,8 +11,6 @@ minecraft 钓鱼脚本
         全屏下无法截图
         键盘被屏蔽
 
-    依赖：
-        pyautogui cnocr opencv-python
 
 
 ## fishing-win.py 为windows可用的后台挂机版本
@@ -22,9 +20,9 @@ minecraft 钓鱼脚本
     使用cnocr识别文本
     修改了屏幕鼠标键盘操作，改用win32api接口，支持后台挂机
 
-    依赖：
-        cnocr traceback ctypes win32ui win32gui win32con win32api
-
+## 依赖环境安装参考
+    Python 3.7.9
+    `pip3 install -r requirements.txt -i https://pypi.tuna.tsinghua.edu.cn/simple`
 
 ### 计划将要支持：
     mser算法之后的文本框选择方法有待改进
