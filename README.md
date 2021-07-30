@@ -21,8 +21,11 @@ minecraft 钓鱼脚本
     修改了屏幕鼠标键盘操作，改用win32api接口，支持后台挂机
 
 ## 依赖环境安装参考
-    Python 3.7.9
-    `pip3 install -r requirements.txt -i https://pypi.tuna.tsinghua.edu.cn/simple`
+Python 3.7.9
+
+```
+pip3 install -r requirements.txt -i https://pypi.tuna.tsinghua.edu.cn/simple
+```
 
 ### 计划将要支持：
     mser算法之后的文本框选择方法有待改进
