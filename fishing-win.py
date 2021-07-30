@@ -20,7 +20,7 @@ class fisher:
     def __del__(self):
         print('共钓鱼 %s 次' % self.__cnt)
 
-    def fish(self, buttonshift=50):
+    def fish(self, buttonshift=52):
         width, height = self.__window.get_window_size()
         while True:
             try:
@@ -53,21 +53,14 @@ class fisher:
                 print('正常退出')
                 break
 
-    def screencheck(self, buttonshift=50):
+    def screencheck(self, buttonshift=52):
         width, height = self.__window.get_window_size()
         fig = self.__window.screenshot(
             width, height-buttonshift, width*3//4, height*3//5)
         img = np.asarray(fig)
         boxes = self.__mser_detect(img)
-        cv2.imshow("截图区域", img)
+        cv2.imshow("range.png", img)
         cv2.waitKey(0)
-        for box in boxes:
-            x, y, w, h = box
-            if (x+w, y+h) > (width//4-5, height*2//5-5-buttonshift):
-                cv2.imshow("可能的文本区域", img[y:y + h, x:x + w])
-                cv2.waitKey(0)
-                res = self.__ocr.ocr(img[y:y + h, x:x + w])
-                self.__print(res)
         return input('\033[1;33m区域校准是否成功:\n\t1、成功，开始钓鱼\n\t2、重新校准\n\t3、放弃\n输入：\033[0m')
 
     def __fishsuccess(self, res):
@@ -113,7 +106,7 @@ if __name__ == '__main__':
             CONTINUE_FLAG = '2'
             QUIT_FLAG = '3'
             flag = fi.screencheck()
-            shif = 50
+            shif = 52
             while flag == CONTINUE_FLAG:
                 shif = int(input('\033[1;33m请输入校准值（默认50）\033[0m'))
                 flag = fi.screencheck(shif)
