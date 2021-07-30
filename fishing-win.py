@@ -20,16 +20,18 @@ class fisher:
     def __del__(self):
         print('共钓鱼 %s 次' % self.__cnt)
 
-    def fish(self, right=861, bottom=468, left=700, top=300):
+    def fish(self, buttonshift=50):
+        width, height = self.__window.get_window_size()
         while True:
             try:
                 t = time.time()
-                fig = self.__window.screenshot(right, bottom, left, top)
+                fig = self.__window.screenshot(
+                    width, height-buttonshift, width*3//4, height*3//5)
                 img = np.asarray(fig)
                 boxes = self.__mser_detect(img)
                 for box in boxes[:3]:
                     x, y, w, h = box
-                    if (x+w, y+h) > (right-left-5, bottom-top-5):
+                    if (x+w, y+h) > (width//4-5, height*2//5-5-buttonshift):
                         res = self.__ocr.ocr(img[y:y + h, x:x + w])
                         self.__print(res)
                         if self.__fishsuccess(res):
@@ -50,6 +52,23 @@ class fisher:
             except KeyboardInterrupt:
                 print('正常退出')
                 break
+
+    def screencheck(self, buttonshift=50):
+        width, height = self.__window.get_window_size()
+        fig = self.__window.screenshot(
+            width, height-buttonshift, width*3//4, height*3//5)
+        img = np.asarray(fig)
+        boxes = self.__mser_detect(img)
+        cv2.imshow("截图区域", img)
+        cv2.waitKey(0)
+        for box in boxes:
+            x, y, w, h = box
+            if (x+w, y+h) > (width//4-5, height*2//5-5-buttonshift):
+                cv2.imshow("可能的文本区域", img[y:y + h, x:x + w])
+                cv2.waitKey(0)
+                res = self.__ocr.ocr(img[y:y + h, x:x + w])
+                self.__print(res)
+        return input('\033[1;33m区域校准是否成功:\n\t1、成功，开始钓鱼\n\t2、重新校准\n\t3、放弃\n输入：\033[0m')
 
     def __fishsuccess(self, res):
         for r in res:
@@ -76,24 +95,35 @@ class fisher:
             print('%s' % ''.join(r), ' ', end='')
         print('')
 
-    def __location(self):
-        0
-
 
 if __name__ == '__main__':
     userin = input(
-        '\033[1;33m请输入需要的操作序号：\n\t1、打印所有窗口名字\n\t2、钓鱼\n\t3、退出\n输入：\033[0m')
+        '\033[1;33m请输入需要的操作序号：\n\t1、打印所有窗口名字\n\t2、钓鱼\n\t3、校准\n\t4、退出\n输入：\033[0m')
     PRINT_FLAG = '1'
     FISH_FLAG = '2'
-    EXIT_FLAG = '3'
+    ALIGN_FLAG = '3'
+    EXIT_FLAG = '4'
     while userin != EXIT_FLAG:
         if userin == PRINT_FLAG:
             vmap.display_all_window()
+        elif userin == ALIGN_FLAG:
+            name = input('\033[1;33m请输入 minecraft 对应窗口名：\033[0m')
+            fi = fisher(name)
+            SUCCESS_FLAG = '1'
+            CONTINUE_FLAG = '2'
+            QUIT_FLAG = '3'
+            flag = fi.screencheck()
+            shif = 50
+            while flag == CONTINUE_FLAG:
+                shif = int(input('\033[1;33m请输入校准值（默认50）\033[0m'))
+                flag = fi.screencheck(shif)
+            if flag == SUCCESS_FLAG:
+                fi.fish(shif)
+            break
         elif userin == FISH_FLAG:
-            name = input('请输入 minecraft 对应窗口名：')
+            name = input('\033[1;33m请输入 minecraft 对应窗口名：\033[0m')
             fisher(name).fish()
+            break
         userin = input(
-            '\033[1;33m请输入需要的操作序号：\n\t1、打印所有窗口名字\n\t2、钓鱼\n\t3、退出\n输入：\033[0m')
+            '\033[1;33m请输入需要的操作序号：\n\t1、打印所有窗口名字\n\t2、钓鱼\n\t3、校准\n\t4、退出\n输入：\033[0m')
 
-    #fisher('Minecraft* 1.16.5 - 单人游戏').pretest()
-    #fisher('Minecraft* 1.16.5 - 单人游戏').fish()
