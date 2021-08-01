@@ -6,7 +6,10 @@ minecraft 钓鱼脚本
 ```
 1、仅支持windows系统后台挂机使用
 2、可以重新校准
+<<<<<<< HEAD
 3、打包好的exe文件在dist目录下
+=======
+>>>>>>> 9e630edb108e408ac519c6c68dd07eaaadabc7ab
 ```
 使用方法：
 ```
