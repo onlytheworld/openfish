@@ -4,3 +4,4 @@ dist/*
 __pycache__/*
 selflib/__pycache__/*
 temp*
+*.spec
