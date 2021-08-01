@@ -40,14 +40,13 @@ class fisher:
                             time.sleep(0.6)
                             self.__window.click(button='right')
                             print('第 %s 次钓鱼成功' % self.__cnt)
-                            time.sleep(4)
+                            time.sleep(2)
                             break
-                extime = 0.5-time.time()+t
+                extime = 0.3-time.time()+t
                 time.sleep(extime if extime > 0 else 0)
             except Exception as e:
                 print('\033[1;31m错误：异常退出\033[0m')
                 traceback.print_exc()
-                input('输入回车键结束程序')
                 break
             except KeyboardInterrupt:
                 print('正常退出')
@@ -119,4 +118,5 @@ if __name__ == '__main__':
             break
         userin = input(
             '\033[1;33m请输入需要的操作序号：\n\t1、打印所有窗口名字\n\t2、钓鱼\n\t3、校准\n\t4、退出\n输入：\033[0m')
+    input('按回车键结束程序')
 

@@ -18,11 +18,16 @@ minecraft 钓鱼脚本
 ![avatar](校准值示意图.png)
 
 正确的截图示例：
+
 ![avatar](正确的截图示例.png)
+
+提高识别准确率方法：
+
+![avatar](提高识别准确率.png)
 
 
 ## 依赖环境安装参考
-Python 3.7.9
+Python 3.7.9 输入
 
 ```
 pip3 install -r requirements.txt -i https://pypi.tuna.tsinghua.edu.cn/simple
