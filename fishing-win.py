@@ -108,7 +108,7 @@ if __name__ == '__main__':
             flag = fi.screencheck()
             shif = 52
             while flag == CONTINUE_FLAG:
-                shif = int(input('\033[1;33m请输入校准值（默认50）\033[0m'))
+                shif = int(input('\033[1;33m请输入校准值（默认52）\033[0m'))
                 flag = fi.screencheck(shif)
             if flag == SUCCESS_FLAG:
                 fi.fish(shif)

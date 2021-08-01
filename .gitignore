@@ -3,4 +3,3 @@ fish_env/*
 __pycache__/*
 selflib/__pycache__/*
 temp*
-*.spec
