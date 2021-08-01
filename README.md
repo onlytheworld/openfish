@@ -6,6 +6,7 @@ minecraft 钓鱼脚本
 ```
 1、仅支持windows系统后台挂机使用
 2、可以重新校准
+3、打包好的exe文件在dist目录下
 ```
 使用方法：
 ```
@@ -42,6 +43,7 @@ pip3 install -r requirements.txt -i https://pypi.tuna.tsinghua.edu.cn/simple
         有一定概率鼠标被屏蔽
         全屏下无法截图
         键盘被屏蔽
+    打包好的exe文件在dist目录下
 
 ### 计划将要支持：
     mser算法之后的文本框选择方法有待改进

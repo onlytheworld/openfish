@@ -22,6 +22,7 @@ class fisher:
 
     def fish(self, buttonshift=52):
         width, height = self.__window.get_window_size()
+        print("开始钓鱼：")
         while True:
             try:
                 t = time.time()
