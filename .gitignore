@@ -1,5 +1,6 @@
 build/*
 fish_env/*
+dist/*
 __pycache__/*
 selflib/__pycache__/*
 temp*
