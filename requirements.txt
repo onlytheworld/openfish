@@ -1,6 +1,6 @@
-pywin32==300
-PyAutoGUI==0.9.52
+pywin32
+PyAutoGUI
 numpy==1.16.6
 opencv_python==4.4.0.46
 cnocr==1.2.2
-Pillow==8.2.0
+Pillow
