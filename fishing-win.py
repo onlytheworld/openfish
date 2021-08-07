@@ -27,6 +27,7 @@ class fisher:
     def fish(self, buttonshift=52):
         width, height = self.__window.get_window_size()
         print("开始钓鱼：")
+        st = time.time()
         while True:
             try:
                 t = time.time()
@@ -57,6 +58,9 @@ class fisher:
             except KeyboardInterrupt:
                 print('正常退出')
                 break
+        st = time.time()-st
+        print("总消耗时间：", st, "秒")
+        print("平均每次钓鱼时间：", st/(self.__cnt if self.__cnt > 0 else 1), "秒")
 
     def screencheck(self, buttonshift=52):
         width, height = self.__window.get_window_size()
@@ -88,7 +92,7 @@ class fisher:
         return boxes
 
     def __print(self, res):
-        if sum(res,[]):
+        if sum(res, []):
             print('识别汉字：', end='')
             for r in res:
                 print('%s' % ''.join(r), ' ', end='')

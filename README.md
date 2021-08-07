@@ -47,6 +47,7 @@ pip3 install -r requirements.txt -i https://pypi.tuna.tsinghua.edu.cn/simple
 ### 计划将要支持：
     反钓鱼脚本检测
     键盘映射控制
+    支持mac平台
 
 
 
