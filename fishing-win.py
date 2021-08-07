@@ -1,10 +1,14 @@
 # -*- coding: UTF-8 -*-
-import sys
-import cv2
-import time
-import traceback
-import numpy as np
 from cnocr import CnOcr
+import numpy as np
+import traceback
+import time
+import cv2
+import sys
+import os
+
+from mxnet.ndarray.ndarray import empty
+os.system("")
 if sys.platform == 'win32':
     from selflib import visualmap as vmap
 else:
@@ -30,7 +34,8 @@ class fisher:
                     width, height-buttonshift, width*3//4, height*3//5)
                 img = np.asarray(fig)
                 boxes = self.__mser_detect(img)
-                for box in boxes[:3]:
+                print('')
+                for box in boxes:
                     x, y, w, h = box
                     if (x+w, y+h) > (width//4-5, height*2//5-5-buttonshift):
                         res = self.__ocr.ocr(img[y:y + h, x:x + w])
@@ -83,10 +88,11 @@ class fisher:
         return boxes
 
     def __print(self, res):
-        print('识别汉字：', end='')
-        for r in res:
-            print('%s' % ''.join(r), ' ', end='')
-        print('')
+        if sum(res,[]):
+            print('识别汉字：', end='')
+            for r in res:
+                print('%s' % ''.join(r), ' ', end='')
+            print('')
 
 
 if __name__ == '__main__':
@@ -120,4 +126,3 @@ if __name__ == '__main__':
         userin = input(
             '\033[1;33m请输入需要的操作序号：\n\t1、打印所有窗口名字\n\t2、钓鱼\n\t3、校准\n\t4、退出\n输入：\033[0m')
     input('按回车键结束程序')
-
