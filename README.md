@@ -5,8 +5,7 @@ minecraft 钓鱼脚本
 脚本特点：
 ```
 1、仅支持windows系统后台挂机使用
-2、可以重新校准
-3、打包好的exe文件在dist目录下
+2、可以重新校准，支持任意窗口大小
 ```
 使用方法：
 ```
@@ -44,12 +43,10 @@ pip3 install -r requirements.txt -i https://pypi.tuna.tsinghua.edu.cn/simple
         有一定概率鼠标被屏蔽
         全屏下无法截图
         键盘被屏蔽
-    打包好的exe文件在dist目录下
 
 ### 计划将要支持：
-    mser算法之后的文本框选择方法有待改进
-    任意窗口大小检测计算
     反钓鱼脚本检测
+    键盘映射控制
 
 
 
