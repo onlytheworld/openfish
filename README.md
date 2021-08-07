@@ -28,7 +28,7 @@ minecraft 钓鱼脚本
 
 
 ## 依赖环境安装参考
-Python 3.7.9 输入
+Python 版本不能高于 3.7.9 ！！！！！！！！！！！！！ 
 
 ```
 pip3 install -r requirements.txt -i https://pypi.tuna.tsinghua.edu.cn/simple
