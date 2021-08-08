@@ -15,16 +15,16 @@ minecraft 钓鱼脚本
 ```
 校准值示意图：
 
-![avatar](校准值示意图.png)
+![avatar](picture/校准值示意图.png)
 
 正确的截图示例：
 
-![avatar](正确的截图示例.png)
+![avatar](picture/正确的截图示例.png)
 
 提高识别准确率方法：
 夜晚请在身边插火把提高亮度！！！！！
 
-![avatar](提高识别准确率.png)
+![avatar](picture/提高识别准确率.png)
 
 
 ## 依赖环境安装参考
