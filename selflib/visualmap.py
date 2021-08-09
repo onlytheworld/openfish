@@ -71,8 +71,6 @@ class screen:
     def screenshot(self, left, top, right, bottom):
         width = right-left
         height = bottom-top
-        self.__saveBitMap.CreateCompatibleBitmap(self.__mfcDC, width, height)
-        self.__saveDC.SelectObject(self.__saveBitMap)
         self.__saveDC.BitBlt((0, 0), (width, height),
                              self.__mfcDC, (left, top), win32con.SRCCOPY)
         return self.__bmptrans()
