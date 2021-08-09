@@ -25,20 +25,26 @@ class fisher:
         print('共钓鱼 %s 次' % self.__cnt)
 
     def fish(self, buttonshift=52):
-        width, height = self.__window.get_window_size()
+        wwidth, wheight = self.__window.get_window_size()
+        left = wwidth*3//4
+        top = wheight*3//5
+        right = wwidth
+        buttom = wheight-buttonshift
+        width = right-left
+        height = buttom-top
+        self.__window.CreateBitmap(left, top, right, buttom)
         print("开始钓鱼：")
         st = time.time()
         while True:
             try:
                 t = time.time()
-                fig = self.__window.screenshot(
-                    width, height-buttonshift, width*3//4, height*3//5)
+                fig = self.__window.screenshot(left, top, right, buttom)
                 img = np.asarray(fig)
                 boxes = self.__mser_detect(img)
                 print('')
                 for box in boxes:
                     x, y, w, h = box
-                    if (x+w, y+h) > (width//4-5, height*2//5-5-buttonshift):
+                    if (x+w, y+h) > (width-5, height-5):
                         res = self.__ocr.ocr(img[y:y + h, x:x + w])
                         self.__print(res)
                         if self.__fishsuccess(res):
@@ -65,7 +71,7 @@ class fisher:
     def screencheck(self, buttonshift=52):
         width, height = self.__window.get_window_size()
         fig = self.__window.screenshot(
-            width, height-buttonshift, width*3//4, height*3//5)
+            width*3//4, height*3//5, width, height-buttonshift)
         img = np.asarray(fig)
         boxes = self.__mser_detect(img)
         cv2.imshow("range.png", img)

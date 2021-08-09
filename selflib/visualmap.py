@@ -62,7 +62,13 @@ class screen:
         bmpstr = self.__saveBitMap.GetBitmapBits(True)
         return Image.frombuffer('RGB', (bmpinfo['bmWidth'], bmpinfo['bmHeight']), bmpstr, 'raw', 'BGRX', 0, 1)
 
-    def screenshot(self, right, bottom, left, top):
+    def CreateBitmap(self,left, top, right, bottom ):
+        width = right-left
+        height = bottom-top
+        self.__saveBitMap.CreateCompatibleBitmap(self.__mfcDC, width, height)
+        self.__saveDC.SelectObject(self.__saveBitMap)
+
+    def screenshot(self, left, top, right, bottom):
         width = right-left
         height = bottom-top
         self.__saveBitMap.CreateCompatibleBitmap(self.__mfcDC, width, height)
